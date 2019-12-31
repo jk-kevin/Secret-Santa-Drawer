@@ -1,0 +1,31 @@
+/*
+Kevin Vuong
+December 31, 2019
+What-to-Eat
+*/
+
+/*
+Colour scheme:
+  blue-grey:  a9b7c0
+  kinda-navy: 254e58
+*/
+
+* {
+  margin: 0;
+}
+html, body{
+  
+}
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: roboto, sans-serif;
+  font-size: 20px;
+}
+#heading-text {
+  margin: 50px 0 0 50px;
+}
+#author {
+  font-size: 15px;
+}
