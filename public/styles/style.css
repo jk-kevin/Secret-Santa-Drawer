@@ -60,11 +60,11 @@ h1 {
   font-size: 80%;
   position: relative;
 }
-#postal-code-box>label {
+#postal-code-box > label {
   font-size: 80%;
   position: absolute;
   left: 1px;
-  bottom: 30px;
+  bottom: 35px;
 }
 #postal-code-input {
   font-size: 100%;
@@ -79,5 +79,13 @@ h1 {
   background-color: #77F269;
   border: none;
   font-weight: bold;
-  font-size: 80%;
+  font-size: 100%;
+}
+
+@media only screen and (max-width: 700px) {
+  #main-box {
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 50px auto 50px auto;
+  }
 }

@@ -7,7 +7,6 @@ What-to-Eat
 -->
 
 <html>
-
   <head>
     <title> What to Eat? </title>
     <link href="/styles/style.css" type="text/css" rel="stylesheet" />
@@ -15,11 +14,11 @@ What-to-Eat
   </head>
 
   <body>
+    
     <div id="heading">
       <h1>What to Eat?</h1>
       <p>Here to help you decide.</p>
     </div>
-
     <div id="main-box">
       <p id="food">Food goes here.</p>
       <div id="inputs">
@@ -27,9 +26,9 @@ What-to-Eat
           <label for="postal-code-input">Postal Code</label>
           <input id="postal-code-input" type="text" name="postal-code" size=6/>
         </div>
-        <input id="food-button" type="button" name="new-food" value="New Food"/>
+        <input id="food-button" type="button" name="new-food" value="New Food" onClick="randomizeFood()"/>
       </div>
     </div>
-
+    <script src="client.js"></script>
   </body>
 </html>
