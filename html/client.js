@@ -1,7 +1,7 @@
 /*
 Kevin Vuong
 December 31, 2019
-What-to-Eat
+Secret-Santa-Drawer
 */
 
 let foods = ["Pizza", "Burgers", "Chinese", "Thai", "Mexican", "Pho", "Shawarma", "Breakfast", "Korean", "Italian", "Greek", "Indian", "Poutine", "Fried Chicken", "Sandwiches", "Sushi"];

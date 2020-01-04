@@ -1,8 +1,7 @@
-What to Eat README
+Secret-Santa-Drawer README
 
-We all have had a situation where nobody can decide what or where to eat. 
-What to Eat is a web application that helps narrow down the choices by randomly generating a type of food and then presents a number of locations available nearby.
-
+For those situations where you would like to have a secret santa gift exchange with friends/family, but do not want to meet up just to draw names.
+Secret-Santa-Drawer will send everybody a private email with the name of the person they drew.
 
 Technologies:
 
@@ -11,7 +10,7 @@ Express.js
 HTML
 CSS
 JavaScript
-Google Places API
+Nodemailer
 
 ===============================================
 
