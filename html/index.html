@@ -8,27 +8,29 @@ Secret-Santa-Drawer
 
 <html>
   <head>
-    <title> What to Eat? </title>
+    <title> Kevin's Secret Santa Drawer </title>
     <link href="/styles/style.css" type="text/css" rel="stylesheet" />
     <!-- found solution to css not linking here: https://stackoverflow.com/questions/34073076/node-js-express-framework-cant-get-css-file -->
   </head>
 
   <body>
-    
     <div id="heading">
-      <h1>What to Eat?</h1>
-      <p>Here to help you decide.</p>
+      <h1>Secret Santa Drawer</h1>
     </div>
     <div id="main-box">
-      <p id="food">Food goes here.</p>
-      <div id="inputs">
-        <div id="postal-code-box">
-          <label for="postal-code-input">Postal Code</label>
-          <input id="postal-code-input" type="text" name="postal-code" size=6/>
+      <form id="inputs" method="POST" action="/send-email">
+        <div class="participant-fields">
+          <div class="input-box">
+            <label for="name-input">Name</label>
+            <input id="name-input" type="text" name="name-input"/>
+          </div>
+          <div class="input-box">
+            <label for="email-input">Email</label>
+            <input id="email-input" type="email" name="email-input"/>
+          </div>
         </div>
-        <input id="food-button" type="button" name="new-food" value="New Food" onClick="randomizeFood()"/>
-      </div>
+        <input id="submit-button" type="submit" name="submit-button" value="Send Emails"/>
+      </form>
     </div>
-    <script src="client.js"></script>
   </body>
 </html>
