@@ -14,8 +14,6 @@ const hostname = '127.0.0.1';
 const port = 3000;
 
 //provide static server
-//app.use(express.static(__dirname + '/html'));
-
 app.use(express.urlencoded()); //extract form data
 
 app.get('/', (req, res) => {
@@ -27,9 +25,57 @@ app.get('/', (req, res) => {
 app.post('/send-email', (req, res) => {
   let data = req.body;
   console.log(data);
-  console.log("data.nameInput = " + data.nameInput);
-  console.log("data.emailInput = " + data.emailInput);
-  /*
+  console.log(Object.keys(data).length); // num of keys in data
+  let numValues = Object.keys(data).length - 1;
+  let participants = new Map();
+  let values = Object.values(data); // parse data from object to array
+
+  // pair names with emails
+  for (let i = 0; i < numValues-1; i+=2) {
+    participants.set(values[i], values[i+1]);
+  }
+  console.log("paired map");
+  console.log(participants);
+  
+  // draw names then send emails
+  drawNames(participants);
+  //sendEmails(participants, drawNames(participants));
+
+
+  res.end()
+});
+
+//Start the server using express
+app.listen(port, () => {
+  console.log('Listening on port 3000!');
+  console.log('Test at http://127.0.0.1:3000/');
+});
+
+function drawNames(names) { // we probably don't need a callback here
+  let result = new Map();
+  let givers = Array.from(names.keys());
+  let receivers = Array.from(names.keys());
+  let numPlayers = givers.length;
+
+  console.log("givers = " + givers);
+  console.log("receivers = " + receivers);
+  for (let i = 0; i < numPlayers; i++) {
+    while (true) {
+      let randomInt = Math.floor(Math.random() * numPlayers);
+
+      if (randomInt !== i && receivers[randomInt] !== null) {
+        result.set(givers[i], receivers[randomInt]);
+        receivers[randomInt] = null;
+        break;
+      }
+    }
+  }
+  console.log("paired list");
+  console.log(result);
+  return result;
+}
+
+function sendEmails(names, pairings) {
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -51,14 +97,5 @@ app.post('/send-email', (req, res) => {
     } else {
       console.log('Email sent: ' + info.response);
     }
-  }); */
-  res.end()
-});
-
-//Start the server using express
-app.listen(port, () => {
-  console.log('Listening on port 3000!');
-  console.log('Test at http://127.0.0.1:3000/');
-});
-
-
+  });
+}

@@ -73,6 +73,10 @@ h1 {
 input:focus {
   outline: none;
 }
+hr {
+  margin: 10px 5px 0 5px;
+  border-top: 1px solid #FAFAFA;
+}
 #submitButton {
   padding: 5px 10px 5px 10px;
   margin: 25px 0 15px 0;

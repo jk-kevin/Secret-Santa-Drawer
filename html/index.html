@@ -18,7 +18,7 @@ Secret-Santa-Drawer
       <h1>Secret Santa Drawer</h1>
     </div>
     <div id="mainBox">
-      <form id="inputs" method="POST" action="/sendEmail">
+      <form id="inputs" method="POST" action="/send-email">
         <div class="participantFields">
           <p>1.</p>
           <div class="inputBox">
@@ -30,6 +30,7 @@ Secret-Santa-Drawer
             <input id="emailInput1" type="email" name="emailInput1"/>
           </div>
         </div>
+        <hr>
         <div class="participantFields">
           <p>2.</p>
           <div class="inputBox">
@@ -41,6 +42,7 @@ Secret-Santa-Drawer
             <input id="emailInput2" type="email" name="emailInput2"/>
           </div>
         </div>
+        <hr>
         <div class="participantFields">
           <p>3.</p>
           <div class="inputBox">
@@ -52,7 +54,9 @@ Secret-Santa-Drawer
             <input id="emailInput3" type="email" name="emailInput3"/>
           </div>
         </div>
-        <input id="submitButton" type="submit" name="submitButton" value="Send Emails"/>
+        <hr>
+        <input id="addParticipant" type="button" name="addButton" value="Add participant"/>
+        <input id="submitButton" type="submit" name="submitButton" value="Send emails"/>
       </form>
     </div>
   </body>
