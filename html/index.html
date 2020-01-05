@@ -17,19 +17,42 @@ Secret-Santa-Drawer
     <div id="heading">
       <h1>Secret Santa Drawer</h1>
     </div>
-    <div id="main-box">
-      <form id="inputs" method="POST" action="/send-email">
-        <div class="participant-fields">
-          <div class="input-box">
-            <label for="name-input">Name</label>
-            <input id="name-input" type="text" name="name-input"/>
+    <div id="mainBox">
+      <form id="inputs" method="POST" action="/sendEmail">
+        <div class="participantFields">
+          <p>1.</p>
+          <div class="inputBox">
+            <label for="nameInput">Name</label>
+            <input id="nameInput1" type="text" name="nameInput1"/>
           </div>
-          <div class="input-box">
-            <label for="email-input">Email</label>
-            <input id="email-input" type="email" name="email-input"/>
+          <div class="inputBox">
+            <label for="emailInput">Email</label>
+            <input id="emailInput1" type="email" name="emailInput1"/>
           </div>
         </div>
-        <input id="submit-button" type="submit" name="submit-button" value="Send Emails"/>
+        <div class="participantFields">
+          <p>2.</p>
+          <div class="inputBox">
+            <label for="nameInput2">Name</label>
+            <input id="nameInput2" type="text" name="nameInput2"/>
+          </div>
+          <div class="inputBox">
+            <label for="emailInput">Email</label>
+            <input id="emailInput2" type="email" name="emailInput2"/>
+          </div>
+        </div>
+        <div class="participantFields">
+          <p>3.</p>
+          <div class="inputBox">
+            <label for="nameInput">Name</label>
+            <input id="nameInput3" type="text" name="nameInput3"/>
+          </div>
+          <div class="inputBox">
+            <label for="emailInput">Email</label>
+            <input id="emailInput3" type="email" name="emailInput3"/>
+          </div>
+        </div>
+        <input id="submitButton" type="submit" name="submitButton" value="Send Emails"/>
       </form>
     </div>
   </body>

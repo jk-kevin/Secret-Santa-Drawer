@@ -25,7 +25,11 @@ app.get('/', (req, res) => {
   app.use(express.static(path.join(__dirname, 'public'))); //send static files like .css files to client
 });
 app.post('/send-email', (req, res) => {
-  console.log(req.body);
+  let data = req.body;
+  console.log(data);
+  console.log("data.nameInput = " + data.nameInput);
+  console.log("data.emailInput = " + data.emailInput);
+  /*
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -47,7 +51,7 @@ app.post('/send-email', (req, res) => {
     } else {
       console.log('Email sent: ' + info.response);
     }
-  });
+  }); */
   res.end()
 });
 
