@@ -19,45 +19,48 @@ Secret-Santa-Drawer
     </div>
     <div id="mainBox">
       <form id="inputs" method="POST" action="/send-email">
-        <div class="participantFields">
-          <p>1.</p>
-          <div class="inputBox">
-            <label for="nameInput">Name</label>
-            <input id="nameInput1" type="text" name="nameInput1"/>
+        <div id="participantFields">
+          <div class="participant">
+            <p>1.</p>
+            <div class="inputBox">
+              <label for="nameInput">Name</label>
+              <input class="nameInput" type="text" name="nameInput" value=""/>
+            </div>
+            <div class="inputBox">
+              <label for="emailInput">Email</label>
+              <input class="emailInput" type="email" name="emailInput" value=""/>
+            </div>
           </div>
-          <div class="inputBox">
-            <label for="emailInput">Email</label>
-            <input id="emailInput1" type="email" name="emailInput1"/>
+          <hr>
+          <div class="participant">
+            <p>2.</p>
+            <div class="inputBox">
+              <label for="nameInput2">Name</label>
+              <input class="nameInput" type="text" name="nameInput" value=""/>
+            </div>
+            <div class="inputBox">
+              <label for="emailInput">Email</label>
+              <input class="emailInput" type="email" name="emailInput" value=""/>
+            </div>
           </div>
+          <hr>
+          <div class="participant">
+            <p>3.</p>
+            <div class="inputBox">
+              <label for="nameInput">Name</label>
+              <input class="nameInput" type="text" name="nameInput" value=""/>
+            </div>
+            <div class="inputBox">
+              <label for="emailInput">Email</label>
+              <input class="emailInput" type="email" name="emailInput" value=""/>
+            </div>
+          </div>
+          <hr>
         </div>
-        <hr>
-        <div class="participantFields">
-          <p>2.</p>
-          <div class="inputBox">
-            <label for="nameInput2">Name</label>
-            <input id="nameInput2" type="text" name="nameInput2"/>
-          </div>
-          <div class="inputBox">
-            <label for="emailInput">Email</label>
-            <input id="emailInput2" type="email" name="emailInput2"/>
-          </div>
-        </div>
-        <hr>
-        <div class="participantFields">
-          <p>3.</p>
-          <div class="inputBox">
-            <label for="nameInput">Name</label>
-            <input id="nameInput3" type="text" name="nameInput3"/>
-          </div>
-          <div class="inputBox">
-            <label for="emailInput">Email</label>
-            <input id="emailInput3" type="email" name="emailInput3"/>
-          </div>
-        </div>
-        <hr>
-        <input id="addParticipant" type="button" name="addButton" value="Add participant"/>
+        <input id="addParticipant" type="button" name="addButton" value="Add participant" onClick="addParticipantFields()"/>
         <input id="submitButton" type="submit" name="submitButton" value="Send emails"/>
       </form>
     </div>
+    <script src="client.js"></script>
   </body>
 </html>

@@ -53,12 +53,14 @@ app.listen(port, () => {
 
 function drawNames(names) { // we probably don't need a callback here
   let result = new Map();
-  let givers = Array.from(names.keys());
-  let receivers = Array.from(names.keys());
+  let givers = Array.from(names.keys())[0]; // dunno why I get an array nested in another block
+  let receivers = [...givers]; //spread operator to duplicate array instead of refrencing it
   let numPlayers = givers.length;
 
-  console.log("givers = " + givers);
-  console.log("receivers = " + receivers);
+  //console.log("givers = " + givers + typeof givers);
+  //console.log(givers);
+  //console.log(receivers);
+  //console.log("numPlayers = " + numPlayers); // THE NUMBER OF PLAYERS IS WRONG!!!
   for (let i = 0; i < numPlayers; i++) {
     while (true) {
       let randomInt = Math.floor(Math.random() * numPlayers);
@@ -70,7 +72,7 @@ function drawNames(names) { // we probably don't need a callback here
       }
     }
   }
-  console.log("paired list");
+  console.log("final list");
   console.log(result);
   return result;
 }
