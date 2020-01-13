@@ -35,7 +35,7 @@ app.post('/send-email', (req, res) => {
   console.log("paired map");
   console.log(participants);
   // draw names then send emails
-  sendEmails(participants, drawNames(participants));
+  drawNames(participants, sendEmails); //use callback function instead
   res.end()
 });
 
@@ -45,18 +45,17 @@ app.listen(port, () => {
   console.log('Test at http://127.0.0.1:3000/');
 });
 
-function drawNames(names) {
+function drawNames(names, callback) {
   let result = new Map();
   let givers = Array.from(names.keys());
   let receivers = [...givers]; //spread operator to duplicate array instead of refrencing it
   let numPlayers = givers.length;
 
-  console.log("Drawing names!");  // it doesn't work when there is no console.log in this function?
+  //console.log("Drawing names!");
   for (let i = 0; i < numPlayers; i++) {
     while (true) {
       let randomInt = Math.floor(Math.random() * numPlayers);
 
-      //console.log(i);
       if (randomInt !== i && receivers[randomInt] !== null) {
         result.set(givers[i], receivers[randomInt]);
         receivers[randomInt] = null;
@@ -66,7 +65,7 @@ function drawNames(names) {
   }
   console.log("final list");
   console.log(result);
-  return result;
+  callback(names, result);
 }
 
 function sendEmails(namesEmails, pairings) { //using nodemailer
