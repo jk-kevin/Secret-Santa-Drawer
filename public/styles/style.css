@@ -27,6 +27,10 @@ body {
   width: 100%;
   margin: 0 auto 50px auto;
 }
+img {
+  width: 10%;
+  height: auto;
+}
 h1 {
   padding-top: 2%;
 }
@@ -74,6 +78,13 @@ input:focus {
 hr {
   margin: 10px 5px 0 5px;
   border-top: 1px solid #FAFAFA;
+}
+#addParticipant {
+  background-color: #77F269;
+  border: none;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 100%;
 }
 #submitButton {
   padding: 5px 10px 5px 10px;
