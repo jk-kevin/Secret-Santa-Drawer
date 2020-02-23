@@ -22,20 +22,41 @@ app.get('/', (req, res) => {
   app.use(express.static(path.join(__dirname, 'public'))); //send static files like .css files to client
 });
 
+app.get('/send-email-confirmation', (req, res) => {
+  res.sendFile(__dirname + '/html/send-email-confirmation.html')
+});
+
+app.get('/send-email-failure', (req, res) => {
+  res.sendFile(__dirname + '/html/send-email-failure.html')
+});
+
 app.post('/send-email', (req, res) => {
   let data = req.body;
-  let participants = new Map();
+  //let participants = new Map();
+  let participants = [];
   let values = Object.values(data); // parse data from object to array
+  //console.log("values: " + values);
+  //console.log("values[0]: " + values[0][0]);
+  //console.log("values[1]: " + values[1][0]);
   let numValues = values[0].length;
 
   // pair names with emails
   for (let i = 0; i < numValues; i++) {
-    participants.set(values[0][i], values[1][i]);
+
+    //participants.set(values[0][i], values[1][i]);
+    participants[i] = [values[0][i], values[1][i]];
   }
-  console.log("paired map");
+  console.log("paired arr");
   console.log(participants);
   // draw names then send emails
-  drawNames(participants, sendEmails); //use callback function instead
+  drawNames(participants, sendEmails);
+  /*
+  if (drawNames(participants, sendEmails)) { //use callback function instead
+    res.redirect('/send-email-confirmation'); // redirect to confirmation
+  }
+  else {
+    res.redirect('/send-email-failure');
+  } */
   res.end()
 });
 
@@ -46,7 +67,9 @@ app.listen(port, () => {
 });
 
 function drawNames(names, callback) {
+  
   let result = new Map();
+  /*
   let givers = Array.from(names.keys());
   let receivers = [...givers]; //spread operator to duplicate array instead of refrencing it
   let numPlayers = givers.length;
@@ -63,14 +86,38 @@ function drawNames(names, callback) {
       }
     }
   }
+  */
+  shuffleArray(names, names.length);
+  // create pairings
+  let firstPerson = names[0];
+  for (let i = 0; i < names.length - 1; i++) {
+    result.set(names[i], names[i + 1]); // first is giver, second is receiver
+  }
+  result.set(names[names.length-1], firstPerson); // pair last person with first
+
+
   console.log("final list");
   console.log(result);
   callback(names, result);
 }
 
+function shuffleArray(arr, times) { // arrays are passed by refrence
+  console.log(`before: ${arr}`);
+  for (let i = 0; i < times; i++) {
+    let randomInt = Math.floor(Math.random() * arr.length);
+    // maybe it shouldn't swap with itself
+    [arr[i], arr[randomInt]] = [arr[randomInt], arr[i]]; // use destructuring to swap
+  }
+  console.log(`after: ${arr}`);
+}
+
+
 function sendEmails(namesEmails, pairings) { //using nodemailer
-  let players = Array.from(namesEmails.keys());
-  let numPlayers = players.length;
+  console.log("SENDING EMAILS");
+  let emailSent = false;
+  let givers = Array.from(pairings.keys());
+  let receivers = Array.from(namesEmails.values());
+  let numPlayers = pairings.size;
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -78,21 +125,25 @@ function sendEmails(namesEmails, pairings) { //using nodemailer
       pass: 'HoHoHo123'
     }
   });
-
+  console.log('numPlayers = ' + numPlayers);
   for (let i = 0; i < numPlayers; i++) {
-    let name = players[i];
+    console.log("SENDING EMAILS " + i);
+    //let name = players[i];
     var mailOptions = {
       from: 'KevinSecretSantaBot@gmail.com',
-      to: namesEmails.get(name),
+      to: givers[i][1],
       subject: 'Secret Santa Draw',
-      text: 'You are giving to ' + pairings.get(name) 
+      text: 'You are giving to ' + receivers[i][1]
     };
-    transporter.sendMail(mailOptions, function(error, info){
+    console.log("mailOptions " + mailOptions.text);
+    transporter.sendMail(mailOptions, function(error, info){ // i need to wait for this to complete
       if (error) {
         console.log(error);
       } else {
         console.log('Email sent: ' + info.response);
+        //emailSent = true;
       }
     });
   }
+  //return emailSent; // this is being sent back before emailSent = true;, so it is always returning false. I will need to do a callback or promise to wait for the true to return
 }
