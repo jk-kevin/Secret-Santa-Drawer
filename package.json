@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/jk-kevin/What-to-Eat#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "nodemailer": "^6.4.2",
     "path": "^0.12.7",
     "request": "^2.88.0"
